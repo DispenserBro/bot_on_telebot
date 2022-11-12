@@ -1,0 +1,5 @@
+[Ee]nv/
+__pycache__/
+*.jpg
+*.png
+config.toml
