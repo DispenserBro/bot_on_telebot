@@ -21,10 +21,6 @@ def get_weather_image(city: str | list[str] = 'Йошкар-Ола') -> tuple[st
     return filename, city
 
 
-def w2_geolocation(city='Йошкар-Ола'):
-    pass
-
-
 def send_weather_image(message: types.Message) -> None:
     logger.info("weather_info_1 triggered")
 
@@ -161,7 +157,7 @@ def send_w2_info(message: types.Message):
     if not city:
         city = 'Погода в городе <u><b>Йошкар-Ола</b></u>'
     else:
-        city = f'Погода в городе <u><b>{" ".join(city)}</b></u>'
+        city = f'Погода в городе <u><b>{" ".join(city).title()}</b></u>'
 
     forecast = tuple('\n'.join(el) for el in forecast)
     forecast = (city,) + forecast
