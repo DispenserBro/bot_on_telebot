@@ -9,14 +9,7 @@ class RelatedMenuItem:
         description: str = '',
         parent: typing.Self | None = None
     ) -> None:
-        """_summary_
 
-        Args:
-            self (typing.Self)
-            btn_name (str): name of button to display
-            description (str, optional): text that will go in message. Defaults to ''.
-            parent (typing.Self | None, optional): parent element of the menu. Defaults to None.
-        """
         self.__btn_name = btn_name
         self.__desc = description
         self.__parent = self.__set_child(parent)
@@ -91,10 +84,10 @@ class RelatedMenuItem:
     def get_buttons(self: typing.Self) -> dict:
         if not self.children:
             if self.parent:
-                return {'Назад': {'callback_data': self.parent.callback}}
+                return {'Back': self.parent.callback}
             return {}
 
-        buttons = {child.button: {'callback_data': child.callback} for child in self.children}
+        buttons = {child.button: child.callback for child in self.children}
         if self.parent:
-            buttons['Назад'] = {'callback_data': self.parent.callback}
+            buttons['Back'] = self.parent.callback
         return buttons
