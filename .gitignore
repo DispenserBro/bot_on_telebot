@@ -3,4 +3,3 @@ __pycache__/
 *.jpg
 *.png
 config.toml
-.git.code-workspace
