@@ -2,8 +2,6 @@ from handlers.utils.weather import send_weather_image, send_w2_info
 from handlers.messages.default import send_help, echo_message
 from starters.get_commands_dict import commands_dict as ALL_COMMANDS
 
-# print(ALL_COMMANDS)
-
 
 def register_handlers(bot):
     bot.register_message_handler(

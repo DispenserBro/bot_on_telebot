@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "../../GeekBrains/git_edu/Seminars/Seminar1/.git"
+		},
+		{
+			"path": "../../GeekBrains/C#/Homeworks"
+		},
+		{
+			"path": "../../GeekBrains/C#/Seminars"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"powershell.cwd": "c:\\Projects",
+		"editor.formatOnSave": true
+	}
+}

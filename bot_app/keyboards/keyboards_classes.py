@@ -1,4 +1,3 @@
-# NYI - TODO: implement RelatedMenuItem class in main modules!!!
 import typing
 
 
