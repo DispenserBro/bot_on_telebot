@@ -7,8 +7,7 @@
 
 - [x] Send weather forecast for 3 days as image
 - [x] Send weather forecast for the week as text
-- [x] ~~Echo other messages~~ (***already deleted in dev branch***)
-- [ ] Send layered menu to user (***currently testing on dev branch***) 
+- [x] Send layered menu to user
 
 </p>
 </details>
