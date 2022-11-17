@@ -13,3 +13,4 @@ def send_help(message: types.Message):
         reply_markup=quick_markup(menu_root.get_buttons(), 1),
         parse_mode='MarkdownV2'
     )
+
