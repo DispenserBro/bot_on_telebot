@@ -36,6 +36,12 @@ help_command = RelatedMenuItem(
 
 # Commands in group_commands group
 
+a_to_sticker = RelatedMenuItem(
+    f'А. \u2794 стикер',
+    description='__*А\. \u2794 стикер*__\n\nБот ответит на сообщение, которое заканчивается на\n`А.` или `а.` стикером \(неприличным\) в группах',
+    parent= group_commands
+)
+
 # Commands in general_commands group
 
 weather_commands = RelatedMenuItem(

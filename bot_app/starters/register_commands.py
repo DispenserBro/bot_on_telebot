@@ -1,28 +1,61 @@
-from handlers.utils.weather import send_weather_image, send_w2_info
-from handlers.messages.private import send_help
-from handlers.callback_handlers.commands_callback import send_menu
+from handlers.messages import private, groups
+from handlers.utils import weather
+from handlers.callback_handlers import commands_callback
+
 from starters.get_commands_dict import commands_dict as ALL_COMMANDS
+from starters.register_bot import logger  # , bot
 
 
-def register_handlers(bot):
+def register_private_msg_handlers(bot):
     bot.register_message_handler(
-        send_help,
+        private.send_help,
         commands=ALL_COMMANDS['help']['commands'],
         chat_types=['private']
     )
 
+    logger.info('private_msg_handlers registered')
+
+
+def register_group_msg_handlers(bot):
     bot.register_message_handler(
-        send_weather_image,
+        groups.answer_a,
+        regexp=r'.*[Аа]\.',
+        chat_types = ['group', 'supergroup']
+    )
+
+    logger.info('group_msg_handlers registered')
+
+
+def register_utils_handlers(bot):
+    bot.register_message_handler(
+        weather.send_weather_image,
         commands=ALL_COMMANDS['weather1']['commands']
     )
 
     bot.register_message_handler(
-        send_w2_info,
+        weather.send_w2_info,
         commands=ALL_COMMANDS['weather2']['commands']
     )
 
+    logger.info('utils_handlers registered')
+
+
+def register_callback_query_handlers(bot):
     bot.register_callback_query_handler(
-        send_menu,
+        commands_callback.send_menu,
         func=lambda c: c.data.startswith('commands')
     )
+
+    logger.info('callback_query_handlers registered')
+
+
+def register_all_handlers(bot):
+    logger.info('Starting handlers registration...')
+    register_private_msg_handlers(bot)
+    register_group_msg_handlers(bot)
+    register_utils_handlers(bot)
+    register_callback_query_handlers(bot)
+
+    logger.info('Handlers registered')
+
     return bot

@@ -8,6 +8,7 @@
 - [x] Send weather forecast for 3 days as image
 - [x] Send weather forecast for the week as text
 - [x] Send layered menu to user
+- [x] React on `А.` and `а.` ending phrases (cyrrilic)
 
 </p>
 </details>
