@@ -23,7 +23,7 @@ install all dependencies via `pip install -r requirements.txt`
 
 Then paste your bot token received from [@BotFather](https://t.me/BotFather) into [config_example.toml](./bot_app/config_example.toml) and rename it into "config.toml"
 
-Finally, do `cd bot app` and `python main.py`
+Finally, do `cd bot_app` and `python main.py`
 
 *That's all!*
 
