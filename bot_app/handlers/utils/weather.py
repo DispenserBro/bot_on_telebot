@@ -1,11 +1,12 @@
 import requests
+import os.path
 from datetime import datetime
 from urllib import request
 from urllib.parse import quote
 from urllib.error import HTTPError
 from telebot import types
 
-from starters.register_bot import bot, logger
+from starters.register_bot import BASE_DIR, bot, logger
 
 
 # 1st weather source: wttr.in
@@ -14,8 +15,8 @@ def get_weather_image(city: str | list[str] = 'Йошкар-Ола') -> tuple[st
         city = ' '.join(city)
     url = f'https://wttr.in/{quote(city)}_pqM_lang=ru.png'
     resource = request.urlopen(url)
-    filename = "./imgs/img.png"
-    out = open(filename, 'wb')
+    filename = "img.png"
+    out = open(os.path.join(BASE_DIR, f'imgs/{filename}'), 'wb')
     out.write(resource.read())
     out.close()
     return filename, city
@@ -29,21 +30,26 @@ def send_weather_image(message: types.Message) -> None:
     match msg_text:
         case [command]:
             image_file, city = get_weather_image()
+
         case command, *city:
             try:
                 image_file, city = get_weather_image(city=city)
+
             except Exception as e:
                 logger.error(e)
+
                 if str(e).startswith('HTTP Error 503'):
                     bot.reply_to(message, '*Сервис недоступен*', parse_mode='MarkdownV2')
                     return
+
                 bot.reply_to(message, '*Город введен неправильно*', parse_mode='MarkdownV2')
                 return
+
         case _:
             bot.reply_to(message, 'Ты тупой?')
             return
 
-    out = open(f"{image_file}", 'rb')
+    out = open(os.path.join(BASE_DIR, f'imgs/{image_file}'), 'rb')
     bot.send_photo(
         chat_id=message.chat.id,
         photo=out,

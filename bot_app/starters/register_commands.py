@@ -1,9 +1,32 @@
-from handlers.messages import private, groups
+from handlers.messages import private, groups, admin
 from handlers.utils import weather
 from handlers.callback_handlers import commands_callback
 
 from starters.get_commands_dict import commands_dict as ALL_COMMANDS
 from starters.register_bot import logger  # , bot
+
+
+def registrer_admin_msg_handlers(bot):
+    bot.register_message_handler(
+        admin.admin_mute_member,
+        func=lambda m: m.text and m.text.startswith('!ro'),
+        chat_types=['group', 'supergroup']
+    )
+
+    bot.register_message_handler(
+        admin.admin_ban_member,
+        func=lambda m: m.text == '!ban',
+        chat_types=['group', 'supergroup']
+    )
+
+    bot.register_message_handler(
+        admin.admin_pardon_member,
+        func=lambda m: m.text and m.text.startswith('!pardon '),
+        chat_types=['group', 'supergroup']
+    )
+
+    logger.info('admin_msg_handlers registered')
+
 
 
 def register_private_msg_handlers(bot):
@@ -51,6 +74,7 @@ def register_callback_query_handlers(bot):
 
 def register_all_handlers(bot):
     logger.info('Starting handlers registration...')
+    registrer_admin_msg_handlers(bot)
     register_private_msg_handlers(bot)
     register_group_msg_handlers(bot)
     register_utils_handlers(bot)
