@@ -1,8 +1,5 @@
 # WIP content
-# TODO:
-# 1. Create a mute command [done, testing]
-# 2. Create a ban and pardon command [done, testing]
-# 3. Create a pin and unpin commands [currently working on this feature]
+# Pin and unpin commands [found telegram-side bugs] (unstable) BUG
 
 from time import strftime, localtime, time as now
 from telebot import types
@@ -223,3 +220,60 @@ def admin_pardon_member(message: types.Message) -> None:
         return
 
     bot.reply_to(message, 'Ты не админ этого чата!')
+
+# Disabled due to a visual bug in telegram client
+
+# def admin_pin_message(message: types.Message):
+#     logger.warning(f'admin_pin_message triggered by user with id {message.from_user.id}')
+
+#     if check_admin(message.from_user.id, message.chat):
+#         if message.reply_to_message:
+
+#             bot.pin_chat_message(message.chat.id, message.reply_to_message.id, disable_notification=True)
+
+#             bot.delete_message(
+#                 message.chat.id,
+#                 message.id
+#             )
+
+#             bot.reply_to(
+#                 message.reply_to_message,
+#                 f'Сообщение закреплено [администратором](tg://user?id={message.from_user.id})\!',
+#                 parse_mode='MarkdownV2'
+#             )
+
+#             return
+
+#         bot.reply_to(message, 'Так закрепить сообщение не получится!')
+
+#         return
+
+#     bot.reply_to(message, 'Ты не админ этого чата!')
+
+
+# def admin_unpin_message(message: types.Message):
+#     logger.warning(f'admin_unpin_message triggered by user with id {message.from_user.id}')
+
+#     if check_admin(message.from_user.id, message.chat):
+#         if message.reply_to_message:
+
+#             bot.unpin_chat_message(message.chat.id, message.reply_to_message.id)
+
+#             bot.delete_message(
+#                 message.chat.id,
+#                 message.id
+#             )
+
+#             bot.reply_to(
+#                 message.reply_to_message,
+#                 f'Сообщение откреплено [администратором](tg://user?id={message.from_user.id})\!',
+#                 parse_mode='MarkdownV2'
+#             )
+
+#             return
+
+#         bot.reply_to(message, 'Так открепить сообщение не получится!')
+
+#         return
+
+#     bot.reply_to(message, 'Ты не админ этого чата!')
