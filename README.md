@@ -7,8 +7,10 @@
 
 - [x] Send weather forecast for 3 days as image
 - [x] Send weather forecast for the week as text
-- [x] Send layered menu to user
-- [x] React on `А.` and `а.` ending phrases (cyrrilic)
+- [x] Send layered menu to user (only in private chat)
+- [x] React on `А.` and `а.` ending phrases (cyrrilic, only in groups)
+- [x] Mute group members
+- [x] Ban and unban members
 
 </p>
 </details>
