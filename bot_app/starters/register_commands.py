@@ -25,20 +25,6 @@ def registrer_admin_msg_handlers(bot):
         chat_types=['group', 'supergroup']
     )
 
-# Disabled due to a visual bug in telegram client
-
-    # bot.register_message_handler(
-    #     admin.admin_pin_message,
-    #     func=lambda m: m.text == '!pin',
-    #     chat_types=['group', 'supergroup']
-    # )
-
-    # bot.register_message_handler(
-    #     admin.admin_unpin_message,
-    #     func=lambda m: m.text == '!unpin',
-    #     chat_types=['group', 'supergroup']
-    # )
-
     logger.info('admin_msg_handlers registered')
 
 
