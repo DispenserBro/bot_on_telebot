@@ -1,5 +1,10 @@
-import tomllib
+from yaml import load, Loader
+
+from starters.register_bot import BASE_DIR
 
 
-with open('./starters/commands.toml', 'rb') as config:
-    commands_dict = tomllib.load(config)
+with open(f'{BASE_DIR}/starters/commands.yaml', 'rb') as config:
+    commands_dict = load(config, Loader)
+
+commands_to_register = commands_dict['commands_register']
+commands_descriptions = commands_dict['commands_menu']

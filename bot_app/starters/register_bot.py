@@ -1,14 +1,14 @@
 import logging
-import tomllib
 import os.path
 import telebot
+from yaml import load, Loader
 from pathlib import Path
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-with open(os.path.join(BASE_DIR, 'config.toml'), 'rb') as config:
-    config = tomllib.load(config)
+with open(os.path.join(BASE_DIR, 'config.yaml'), 'rb') as config:
+    config = load(config, Loader)
 
 token = config['bot_info']['token']
 

@@ -1,14 +1,46 @@
+"""Module that provides layered menu feature to the bot.
+::contents::
+:class: RelatedMenuItem
+    Class to turn data into menu items
+:func: set_menu_children
+    Function to generate menu from root and dict with children data"""
+
 import typing
 
 
 class RelatedMenuItem:
+    """class to turn data into menu items
+
+    Properties:
+        callback: str
+            returns object callback data
+
+        parent: str
+            returns object parent
+
+        button: str
+            returns a button name for the object
+            sets a new button name for the object
+
+        description: str
+            returns a description for the object
+            sets a new description for the object
+
+        children: list
+            returns a list of child objects
+            adds a new child object to the list of child objects of the object
+
+    Methods:
+        get_buttons -> dict
+            returns a callback data to generate buttons
+    """
     def __init__(
         self: typing.Self,
         btn_name: str,
         description: str = '',
         parent: typing.Self | None = None
     ) -> None:
-        """_summary_
+        """intializes a RelatedMenuItem class object
 
         Args:
             self (typing.Self)
@@ -97,3 +129,11 @@ class RelatedMenuItem:
         if self.parent:
             buttons['Назад'] = {'callback_data': self.parent.callback}
         return buttons
+
+
+def set_menu_children(items: dict, root: RelatedMenuItem) -> None:
+    for key, value in items.items():
+        current_el = RelatedMenuItem(btn_name=key, description=value[0], parent=root)
+        if len(value) > 1:
+            for el in value[1:]:
+                set_menu_children(el, current_el)

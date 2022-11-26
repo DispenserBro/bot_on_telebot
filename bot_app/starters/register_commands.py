@@ -4,7 +4,7 @@ from handlers.messages import private, groups, admin
 from handlers.utils import weather
 from handlers.callback_handlers import commands_callback
 
-from starters.get_commands_dict import commands_dict as ALL_COMMANDS
+from starters.get_commands_dict import commands_to_register as ALL_COMMANDS
 from starters.register_bot import logger  # , bot
 
 
@@ -33,7 +33,7 @@ def registrer_admin_msg_handlers(bot: TeleBot) -> None:
 def register_private_msg_handlers(bot: TeleBot) -> None:
     bot.register_message_handler(
         private.send_help,
-        commands=ALL_COMMANDS['help']['commands'],
+        commands=ALL_COMMANDS['help'],
         chat_types=['private']
     )
 
@@ -53,12 +53,12 @@ def register_group_msg_handlers(bot: TeleBot) -> None:
 def register_utils_handlers(bot: TeleBot) -> None:
     bot.register_message_handler(
         weather.send_weather_image,
-        commands=ALL_COMMANDS['weather1']['commands']
+        commands=ALL_COMMANDS['weather1']
     )
 
     bot.register_message_handler(
         weather.send_w2_info,
-        commands=ALL_COMMANDS['weather2']['commands']
+        commands=ALL_COMMANDS['weather2']
     )
 
     logger.info('utils_handlers registered')
