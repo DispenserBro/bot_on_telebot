@@ -5,3 +5,6 @@ __pycache__/
 *.jpg
 *.png
 config.toml
+
+*wip*.py
+wip_*/
