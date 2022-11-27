@@ -4,7 +4,7 @@ __pycache__/
 .vscode/
 *.jpg
 *.png
-config.toml
+config.*
 
 *wip*.py
 wip_*/
