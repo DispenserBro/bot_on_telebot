@@ -31,8 +31,13 @@ Finally, do `cd bot_app` and `python main.py`
 
 ### Usage
 
+
 All bot commands will be shown with the following commands:
 `/start`
 `/help`
 
-<!-- ### Examples -->
+<!-- 
+```Shell
+cd ed
+``` 
+-->
